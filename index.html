@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/webp" href="Mr.Heat.webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Index Confirmation</title>
+    <style>
+        body {
+         background-image: url('guyfire.gif');
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;
+         background-attachment: fixed;
+         height: 100vh;                
+         margin: 0;
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+        }
+        h1 {
+            color: #ff6600;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.1em;
+            color: #ffcc99;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 5px;
+            border: 2px solid #ff6600;
+            background: #330000;
+            color: #ffcc99;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        input::placeholder {
+            color: #ff9933;
+        }
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff3300, #ff9900);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+  
+            transform: scale(1.05);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.3em;
+            padding: 15px;
+            border-radius: 5px;
+            background: rgba(255, 51, 0, 0.2);
+            border-left: 4px solid #ff6600;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 HEAT INDEX CONFIRMATION 🔥</h1>
+    <p>Enter a temperature in °C and your humidity % then submit to verify your heat index:</p>
+    <input type="number" id="tempInput" placeholder="Temperature (°C)">
+    <input type="number" id="humidityInput" placeholder="Humidity (%)">
+    <button onclick="calculateHeatIndex()">Calculate Heat Index</button>
+    <h3 id="result"></h3>
+    <script>
+        function calculateHeatIndex() {
+            var tempC = parseFloat(document.getElementById("tempInput").value);
+            var humidity = parseFloat(document.getElementById("humidityInput").value);
+            var heatIndex = tempC + (0.33 * humidity) - 4;
+            
+            switch (true) {
+                 case (heatIndex >= 20 && heatIndex <= 24):
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - There must be some alphas in the atmosphere";
+                    break;
+                 case (heatIndex >= 25 && heatIndex <= 27):
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - Mali langgam get it? HAHAHHA XD";
+                    break;
+                case (heatIndex >= 28 && heatIndex <= 31):
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - Mid XD";
+                    break;
+                case (heatIndex > 32 && heatIndex <= 35):
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - its getin hot in here so take off all yo clothes 🔥";
+                    break;
+                case (heatIndex > 36):
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - DAMN SON THATS HOT ASL 🔥🔥🔥";
+                    break;
+                default:
+                    document.getElementById("result").innerHTML = "Heat Index: " + heatIndex.toFixed(2) + " - Thats low asl son";
+            }
+        }
+    </script>
+</body>
+</html>
